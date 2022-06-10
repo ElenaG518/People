@@ -15,6 +15,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<UsersContext>();
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddScoped<IUserRepo, MockUserRepo>();
+builder.Services.AddScoped<IUserRepo, SqlUserRepo>();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
